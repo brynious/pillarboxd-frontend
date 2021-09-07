@@ -1,7 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 export const Header = () => {
+  const { authState, dispatch } = useContext(AuthContext);
+
   return (
     <header>
       <div className="container">
@@ -12,7 +15,7 @@ export const Header = () => {
 
           <ul className="nav-links">
             <li>
-              <Link to="/">Watchlist</Link>
+              <Link to="/watchlist">Watchlist</Link>
             </li>
             <li>
               <Link to="/watching">Watching</Link>
@@ -25,6 +28,23 @@ export const Header = () => {
                 + Add
               </Link>
             </li>
+            {authState.isAuthenticated ? (
+              <li>
+                <button onClick={() => dispatch({ type: 'logout' })}>
+                  Sign out
+                </button>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+                <li>
+                  {/* TODO: create sign up page */}
+                  <Link to="/">Sign Up</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>

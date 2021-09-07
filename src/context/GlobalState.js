@@ -16,37 +16,25 @@ export const GlobalProvider = props => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   useEffect(() => {
-    axios
-      .get(
-        'http://localhost:3000/user/bryn/watchlist'
-      )
-      .then(response => {
-        console.log(response);
-        dispatch({
-          type: 'INITIALIZE_WATCHLIST',
-          payload: response.data,
-        });
+    axios.get('http://localhost:3000/user/bryn/watchlist').then(response => {
+      console.log(response);
+      dispatch({
+        type: 'INITIALIZE_WATCHLIST',
+        payload: response.data,
       });
-    axios
-      .get(
-        'http://localhost:3000/user/bryn/watching'
-      )
-      .then(response => {
-        dispatch({
-          type: 'INITIALIZE_WATCHING',
-          payload: response.data,
-        });
+    });
+    axios.get('http://localhost:3000/user/bryn/watching').then(response => {
+      dispatch({
+        type: 'INITIALIZE_WATCHING',
+        payload: response.data,
       });
-    axios
-      .get(
-        'http://localhost:3000/user/bryn/watched'
-      )
-      .then(response => {
-        dispatch({
-          type: 'INITIALIZE_WATCHED',
-          payload: response.data,
-        });
+    });
+    axios.get('http://localhost:3000/user/bryn/watched').then(response => {
+      dispatch({
+        type: 'INITIALIZE_WATCHED',
+        payload: response.data,
       });
+    });
   }, []);
 
   // actions
