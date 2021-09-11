@@ -4,12 +4,18 @@ import { Link, Redirect } from 'react-router-dom';
 // import { TextInput, Button } from "./utils/Utils";
 import { AuthContext } from '../context/AuthContext';
 
-export const LogIn = () => {
+export const Signup = () => {
   const { authState, dispatch } = useContext(AuthContext);
   // const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userDetails, setUserDetails] = useState({
-    email: 'bryn@google.com',
+    username: 'testusername',
+    email: 'test@google.com',
     password: 'test12',
+  });
+  const [submissionErrors, setSubmissionErrors] = useState({
+    username: '',
+    email: '',
+    password: '',
   });
 
   const handleChange = e => {
@@ -26,7 +32,7 @@ export const LogIn = () => {
       const body = JSON.stringify(userDetails);
 
       console.log('request', { body });
-      const res = await axios.post('http://localhost:3000/login', body, {
+      const res = await axios.post('http://localhost:3000/signup', body, {
         withCredentials: true,
         exposedHeaders: ['set-cookie'],
       });
@@ -42,7 +48,13 @@ export const LogIn = () => {
 
       console.log('logged in');
     } catch (err) {
-      console.log(err);
+      const errors = err.response.data.errors;
+      setSubmissionErrors({
+        username: errors.username,
+        email: errors.email,
+        password: errors.password,
+      });
+      console.log(err.response.data);
     }
   };
 
@@ -51,20 +63,32 @@ export const LogIn = () => {
       {authState.isAuthenticated && <Redirect to="/" />}
       <form className="user-form" onSubmit={e => handleSubmit(e)}>
         <header className="form-header">
-          <h2>Log in</h2>
+          <h2>Sign up</h2>
           <span>
-            <Link to="/createaccount">Create an account</Link>
+            <Link to="/login">Login here</Link>
           </span>
         </header>
         <div className="form-group">
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value={userDetails.username}
+            onChange={e => handleChange(e)}
+          />
+          {submissionErrors.username && <p>{submissionErrors.username}</p>}
+        </div>
+        <div className="form-group">
           <label htmlFor="email">Email address:</label>
           <input
-            type="email"
+            // type="email"
             id="email"
             name="email"
             value={userDetails.email}
             onChange={e => handleChange(e)}
           />
+          {submissionErrors.email && <p>{submissionErrors.email}</p>}
         </div>
         <div className="form-group">
           <label htmlFor="password">Password:</label>
@@ -75,8 +99,9 @@ export const LogIn = () => {
             value={userDetails.password}
             onChange={e => handleChange(e)}
           />
+          {submissionErrors.password && <p>{submissionErrors.password}</p>}
         </div>
-        <button>Log in</button>
+        <button>Create Account</button>
       </form>
     </div>
   );

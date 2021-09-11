@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import { LogIn } from './components/LogIn';
+import { Signup } from './components/Signup';
 import { Watchlist } from './components/Watchlist';
 import { Watched } from './components/Watched';
 import { Add } from './components/Add';
@@ -32,6 +33,10 @@ function App() {
 
             <Route exact path="/login">
               <LogIn />
+            </Route>
+
+            <Route exact path="/signup">
+              <Signup />
             </Route>
 
             <Route exact path="/watchlist">

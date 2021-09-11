@@ -4,14 +4,12 @@ import axios from 'axios';
 const authReducer = (authState, action) => {
   switch (action.type) {
     case 'login':
-      const { isAuthenticated, userID, userName } = action.payload;
+      const { isAuthenticated, userID, username, email } = action.payload;
       localStorage.setItem('isAuthenticated', isAuthenticated);
       localStorage.setItem('userID', userID);
-      localStorage.setItem('userName', userName);
+      localStorage.setItem('username', username);
+      localStorage.setItem('email', email);
 
-      // axios.defaults.headers.common = {
-      //   Authorization: 'Bearer ' + localStorage.getItem('token'),
-      // };
       axios.defaults.headers.post = {
         'Content-Type': 'application/json',
       };
@@ -20,7 +18,8 @@ const authReducer = (authState, action) => {
         ...authState,
         isAuthenticated: true,
         userID,
-        userName,
+        username,
+        email,
         // socket,
       };
     case 'logout':

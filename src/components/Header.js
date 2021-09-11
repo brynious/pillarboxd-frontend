@@ -30,9 +30,10 @@ export const Header = () => {
             </li>
             {authState.isAuthenticated ? (
               <li>
-                <button onClick={() => dispatch({ type: 'logout' })}>
+                {/* TODO: delete cookie on signout */}
+                <Link to="/" onClick={() => dispatch({ type: 'logout' })}>
                   Sign out
-                </button>
+                </Link>
               </li>
             ) : (
               <>
@@ -41,7 +42,7 @@ export const Header = () => {
                 </li>
                 <li>
                   {/* TODO: create sign up page */}
-                  <Link to="/">Sign Up</Link>
+                  <Link to="/signup">Sign Up</Link>
                 </li>
               </>
             )}
