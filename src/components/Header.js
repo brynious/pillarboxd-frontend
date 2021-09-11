@@ -41,7 +41,6 @@ export const Header = () => {
                   <Link to="/login">Login</Link>
                 </li>
                 <li>
-                  {/* TODO: create sign up page */}
                   <Link to="/signup">Sign Up</Link>
                 </li>
               </>

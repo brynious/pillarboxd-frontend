@@ -1,9 +1,21 @@
-import React, { useContext } from "react";
-import { GlobalContext } from "../context/GlobalState";
-import { TvSeriesCard } from "./TvSeriesCard";
+import React, { useState, useEffect, useContext } from 'react';
+// import { GlobalContext } from '../context/GlobalState';
+import { TvSeriesCard } from './TvSeriesCard';
+import axios from 'axios';
 
 export const Watching = () => {
-  const { watching } = useContext(GlobalContext);
+  // const { watching } = useContext(GlobalContext);
+  const [watchingData, setWatchingData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:3000/user/bryn/watching', {
+        withCredentials: true,
+      })
+      .then(response => {
+        setWatchingData(response.data);
+      });
+  }, []);
 
   return (
     <div className="tv-series-page">
@@ -11,13 +23,13 @@ export const Watching = () => {
         <div className="header">
           <h1 className="heading">Currently Watching</h1>
           <span className="count-pill">
-            {watching.length} {watching.length === 1 ? "Show" : "Shows"}
+            {watchingData.length} {watchingData.length === 1 ? 'Show' : 'Shows'}
           </span>
         </div>
 
-        {watching.length > 0 ? (
+        {watchingData.length > 0 ? (
           <div className="tv-series-grid">
-            {watching.map((tvSeries, index) => (
+            {watchingData.map((tvSeries, index) => (
               <TvSeriesCard tvSeries={tvSeries} type="watching" key={index} />
             ))}
           </div>
