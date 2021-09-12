@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
-// import { GlobalContext } from '../context/GlobalState';
+import React, { useState, useEffect } from 'react';
 import { TvSeriesCard } from './TvSeriesCard';
 import axios from 'axios';
 
 export const Watching = () => {
-  // const { watching } = useContext(GlobalContext);
   const [watchingData, setWatchingData] = useState([]);
 
   useEffect(() => {

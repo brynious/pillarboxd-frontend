@@ -17,7 +17,6 @@ export const GlobalProvider = props => {
 
   useEffect(() => {
     axios.get('http://localhost:3000/user/bryn/watchlist').then(response => {
-      console.log(response);
       dispatch({
         type: 'INITIALIZE_WATCHLIST',
         payload: response.data,

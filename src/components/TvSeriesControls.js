@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
-import { GlobalContext } from "../context/GlobalState";
+import React, { useContext } from 'react';
+import { GlobalContext } from '../context/GlobalState';
+import axios from 'axios';
 
 export const TvSeriesControls = ({ tvSeries, type }) => {
   const {
@@ -13,7 +14,7 @@ export const TvSeriesControls = ({ tvSeries, type }) => {
 
   return (
     <div className="inner-card-controls">
-      {type === "watchlist" && (
+      {type === 'watchlist' && (
         <>
           <button className="ctrl-btn" onClick={() => moveToWatching(tvSeries)}>
             <i className="fa-fw far fa-eye"></i>
@@ -32,7 +33,7 @@ export const TvSeriesControls = ({ tvSeries, type }) => {
         </>
       )}
 
-      {type === "watching" && (
+      {type === 'watching' && (
         <>
           <button
             className="ctrl-btn"
@@ -48,14 +49,21 @@ export const TvSeriesControls = ({ tvSeries, type }) => {
 
           <button
             className="ctrl-btn"
-            onClick={() => removeFromWatching(tvSeries.tmdb_id)}
+            onClick={e => {
+              axios.delete(
+                `http://localhost:3000/user/bryn/watching/${tvSeries.tmdb_id}`,
+                {
+                  withCredentials: true,
+                }
+              );
+            }}
           >
             <i className="fa-fw fa fa-times"></i>
           </button>
         </>
       )}
 
-      {type === "watched" && (
+      {type === 'watched' && (
         <>
           <button
             className="ctrl-btn"
