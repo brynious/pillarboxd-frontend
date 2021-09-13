@@ -15,6 +15,12 @@ export const Watching = () => {
       });
   }, []);
 
+  const changeHandler = (tvSeries, action) => {
+    console.log('changeHandler was called');
+    console.log(tvSeries);
+    console.log(action);
+  };
+
   return (
     <div className="tv-series-page">
       <div className="container">
@@ -28,7 +34,12 @@ export const Watching = () => {
         {watchingData.length > 0 ? (
           <div className="tv-series-grid">
             {watchingData.map((tvSeries, index) => (
-              <TvSeriesCard tvSeries={tvSeries} type="watching" key={index} />
+              <TvSeriesCard
+                tvSeries={tvSeries}
+                type="watching"
+                key={index}
+                handler={(tvSeries, action) => changeHandler(tvSeries, action)}
+              />
             ))}
           </div>
         ) : (

@@ -1,7 +1,7 @@
-import React from "react";
-import { TvSeriesControls } from "./TvSeriesControls";
+import React from 'react';
+import { TvSeriesControls } from './TvSeriesControls';
 
-export const TvSeriesCard = ({ tvSeries, type }) => {
+export const TvSeriesCard = ({ tvSeries, type, handler }) => {
   return (
     <div className="tv-series-card">
       <div className="overlay"></div>
@@ -14,7 +14,7 @@ export const TvSeriesCard = ({ tvSeries, type }) => {
         <div className="filler-poster"></div>
       )}
 
-      <TvSeriesControls type={type} tvSeries={tvSeries} />
+      <TvSeriesControls type={type} tvSeries={tvSeries} handler={handler} />
     </div>
   );
 };
