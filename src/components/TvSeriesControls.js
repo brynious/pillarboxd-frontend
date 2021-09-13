@@ -16,15 +16,16 @@ export const TvSeriesControls = ({ tvSeries, type }) => {
     <div className="inner-card-controls">
       {type === 'watchlist' && (
         <>
-          <button className="ctrl-btn" onClick={() => moveToWatching(tvSeries)}>
+          <button title="Move to Watching" className="ctrl-btn" onClick={() => moveToWatching(tvSeries)}>
             <i className="fa-fw far fa-eye"></i>
           </button>
 
-          <button className="ctrl-btn" onClick={() => moveToWatched(tvSeries)}>
+          <button title="Move to Watched" className="ctrl-btn" onClick={() => moveToWatched(tvSeries)}>
             <i className="fa-fw fas fa-check"></i>
           </button>
 
           <button
+            title="Remove from Watchlist"
             className="ctrl-btn"
             onClick={() => removeFromWatchlist(tvSeries.tmdb_id)}
           >
@@ -36,18 +37,19 @@ export const TvSeriesControls = ({ tvSeries, type }) => {
       {type === 'watching' && (
         <>
           <button
+            title="Move to Watchlist"
             className="ctrl-btn"
             onClick={() => moveToWatchlist(tvSeries)}
           >
-            {/* <i className="fa-fw far fa-eye-slash"></i> */}
             <i className="fa-fw fas fa-clipboard-list"></i>
           </button>
 
-          <button className="ctrl-btn" onClick={() => moveToWatched(tvSeries)}>
+          <button title="Move to Watched" className="ctrl-btn" onClick={() => moveToWatched(tvSeries)}>
             <i className="fa-fw fas fa-check"></i>
           </button>
 
           <button
+            title="Remove from Watching"
             className="ctrl-btn"
             onClick={e => {
               axios.delete(
@@ -66,18 +68,19 @@ export const TvSeriesControls = ({ tvSeries, type }) => {
       {type === 'watched' && (
         <>
           <button
+            title="Move to Watchlist"
             className="ctrl-btn"
             onClick={() => moveToWatchlist(tvSeries)}
           >
-            {/* <i className="fa-fw far fa-eye-slash"></i> */}
             <i className="fa-fw fas fa-clipboard-list"></i>
           </button>
 
-          <button className="ctrl-btn" onClick={() => moveToWatching(tvSeries)}>
+          <button title="Move to Watching" className="ctrl-btn" onClick={() => moveToWatching(tvSeries)}>
             <i className="fa-fw far fa-eye"></i>
           </button>
 
           <button
+            title="Remove from Watched"
             className="ctrl-btn"
             onClick={() => removeFromWatched(tvSeries.tmdb_id)}
           >
