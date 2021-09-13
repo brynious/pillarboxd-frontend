@@ -1,9 +1,62 @@
-import React, { useContext } from "react";
-import { GlobalContext } from "../context/GlobalState";
-import { TvSeriesCard } from "./TvSeriesCard";
+import React, { useState, useEffect } from 'react';
+import { TvSeriesCard } from './TvSeriesCard';
+import axios from 'axios';
 
 export const Watchlist = () => {
-  const { watchlist } = useContext(GlobalContext);
+  const [watchlistSeries, setWatchlistSeries] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:3000/user/bryn/watchlist', {
+        withCredentials: true,
+      })
+      .then(response => {
+        setWatchlistSeries(response.data);
+      });
+  }, []);
+
+  const changeHandler = (action, tmdb_id) => {
+    switch (action) {
+      case 'moveToWatching':
+        axios
+          .post(`http://localhost:3000/user/bryn/watching/${tmdb_id}`)
+          .then(() => {
+            setWatchlistSeries(
+              watchlistSeries.filter(series => series.tmdb_id !== tmdb_id)
+            );
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        break;
+      case 'moveToWatched':
+        axios
+          .post(`http://localhost:3000/user/bryn/watched/${tmdb_id}`)
+          .then(() => {
+            setWatchlistSeries(
+              watchlistSeries.filter(series => series.tmdb_id !== tmdb_id)
+            );
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        break;
+      case 'removeFromWatchlist':
+        axios
+          .delete(`http://localhost:3000/user/bryn/watchlist/${tmdb_id}`)
+          .then(() => {
+            setWatchlistSeries(
+              watchlistSeries.filter(series => series.tmdb_id !== tmdb_id)
+            );
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        break;
+      default:
+        console.log('changeHandler was called without a valid action');
+    }
+  };
 
   return (
     <div className="tv-series-page">
@@ -11,14 +64,20 @@ export const Watchlist = () => {
         <div className="header">
           <h1 className="heading">My Watchlist</h1>
           <span className="count-pill">
-            {watchlist.length} {watchlist.length === 1 ? "Show" : "Shows"}
+            {watchlistSeries.length}{' '}
+            {watchlistSeries.length === 1 ? 'Show' : 'Shows'}
           </span>
         </div>
 
-        {watchlist.length > 0 ? (
+        {watchlistSeries.length > 0 ? (
           <div className="tv-series-grid">
-            {watchlist.map((tvSeries, index) => (
-              <TvSeriesCard tvSeries={tvSeries} type="watchlist" key={index} />
+            {watchlistSeries.map((tvSeries, index) => (
+              <TvSeriesCard
+                tvSeries={tvSeries}
+                type="watchlist"
+                key={index}
+                handler={(action, tmdb_id) => changeHandler(action, tmdb_id)}
+              />
             ))}
           </div>
         ) : (

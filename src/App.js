@@ -18,6 +18,7 @@ import { GlobalProvider } from './context/GlobalState';
 axios.defaults.headers.post = {
   'Content-Type': 'application/json',
 };
+axios.defaults.withCredentials = true;
 
 function App() {
   return (

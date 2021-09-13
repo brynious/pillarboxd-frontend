@@ -3,7 +3,7 @@ import { TvSeriesCard } from './TvSeriesCard';
 import axios from 'axios';
 
 export const Watching = () => {
-  const [watchingData, setWatchingData] = useState([]);
+  const [watchingSeries, setWatchingSeries] = useState([]);
 
   useEffect(() => {
     axios
@@ -11,14 +11,51 @@ export const Watching = () => {
         withCredentials: true,
       })
       .then(response => {
-        setWatchingData(response.data);
+        setWatchingSeries(response.data);
       });
   }, []);
 
-  const changeHandler = (tvSeries, action) => {
-    console.log('changeHandler was called');
-    console.log(tvSeries);
-    console.log(action);
+  const changeHandler = (action, tmdb_id) => {
+    switch (action) {
+      case 'moveToWatchlist':
+        axios
+          .post(`http://localhost:3000/user/bryn/watchlist/${tmdb_id}`)
+          .then(() => {
+            setWatchingSeries(
+              watchingSeries.filter(series => series.tmdb_id !== tmdb_id)
+            );
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        break;
+      case 'moveToWatched':
+        axios
+          .post(`http://localhost:3000/user/bryn/watched/${tmdb_id}`)
+          .then(() => {
+            setWatchingSeries(
+              watchingSeries.filter(series => series.tmdb_id !== tmdb_id)
+            );
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        break;
+      case 'removeFromWatching':
+        axios
+          .delete(`http://localhost:3000/user/bryn/watching/${tmdb_id}`)
+          .then(() => {
+            setWatchingSeries(
+              watchingSeries.filter(series => series.tmdb_id !== tmdb_id)
+            );
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        break;
+      default:
+        console.log('changeHandler was called without a valid action');
+    }
   };
 
   return (
@@ -27,18 +64,19 @@ export const Watching = () => {
         <div className="header">
           <h1 className="heading">Currently Watching</h1>
           <span className="count-pill">
-            {watchingData.length} {watchingData.length === 1 ? 'Show' : 'Shows'}
+            {watchingSeries.length}{' '}
+            {watchingSeries.length === 1 ? 'Show' : 'Shows'}
           </span>
         </div>
 
-        {watchingData.length > 0 ? (
+        {watchingSeries.length > 0 ? (
           <div className="tv-series-grid">
-            {watchingData.map((tvSeries, index) => (
+            {watchingSeries.map((tvSeries, index) => (
               <TvSeriesCard
                 tvSeries={tvSeries}
                 type="watching"
                 key={index}
-                handler={(tvSeries, action) => changeHandler(tvSeries, action)}
+                handler={(action, tmdb_id) => changeHandler(action, tmdb_id)}
               />
             ))}
           </div>

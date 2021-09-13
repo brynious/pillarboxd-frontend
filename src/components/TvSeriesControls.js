@@ -1,17 +1,6 @@
-import React, { useContext } from 'react';
-import { GlobalContext } from '../context/GlobalState';
-import axios from 'axios';
+import React from 'react';
 
 export const TvSeriesControls = ({ tvSeries, type, handler }) => {
-  const {
-    removeFromWatchlist,
-    removeFromWatched,
-    removeFromWatching,
-    moveToWatchlist,
-    moveToWatching,
-    moveToWatched,
-  } = useContext(GlobalContext);
-
   return (
     <div className="inner-card-controls">
       {type === 'watchlist' && (
@@ -19,7 +8,7 @@ export const TvSeriesControls = ({ tvSeries, type, handler }) => {
           <button
             title="Move to Watching"
             className="ctrl-btn"
-            onClick={() => moveToWatching(tvSeries)}
+            onClick={e => handler('moveToWatching', tvSeries.tmdb_id)}
           >
             <i className="fa-fw far fa-eye"></i>
           </button>
@@ -27,7 +16,7 @@ export const TvSeriesControls = ({ tvSeries, type, handler }) => {
           <button
             title="Move to Watched"
             className="ctrl-btn"
-            onClick={() => moveToWatched(tvSeries)}
+            onClick={e => handler('moveToWatched', tvSeries.tmdb_id)}
           >
             <i className="fa-fw fas fa-check"></i>
           </button>
@@ -35,7 +24,7 @@ export const TvSeriesControls = ({ tvSeries, type, handler }) => {
           <button
             title="Remove from Watchlist"
             className="ctrl-btn"
-            onClick={() => removeFromWatchlist(tvSeries.tmdb_id)}
+            onClick={e => handler('removeFromWatchlist', tvSeries.tmdb_id)}
           >
             <i className="fa-fw fa fa-times"></i>
           </button>
@@ -47,7 +36,7 @@ export const TvSeriesControls = ({ tvSeries, type, handler }) => {
           <button
             title="Move to Watchlist"
             className="ctrl-btn"
-            onClick={e => handler(tvSeries.tmdb_id, 'moveToWatchlist')}
+            onClick={e => handler('moveToWatchlist', tvSeries.tmdb_id)}
           >
             <i className="fa-fw fas fa-clipboard-list"></i>
           </button>
@@ -55,7 +44,7 @@ export const TvSeriesControls = ({ tvSeries, type, handler }) => {
           <button
             title="Move to Watched"
             className="ctrl-btn"
-            onClick={() => moveToWatched(tvSeries)}
+            onClick={e => handler('moveToWatched', tvSeries.tmdb_id)}
           >
             <i className="fa-fw fas fa-check"></i>
           </button>
@@ -63,14 +52,7 @@ export const TvSeriesControls = ({ tvSeries, type, handler }) => {
           <button
             title="Remove from Watching"
             className="ctrl-btn"
-            onClick={e => {
-              axios.delete(
-                `http://localhost:3000/user/bryn/watching/${tvSeries.tmdb_id}`,
-                {
-                  withCredentials: true,
-                }
-              );
-            }}
+            onClick={e => handler('removeFromWatching', tvSeries.tmdb_id)}
           >
             <i className="fa-fw fa fa-times"></i>
           </button>
@@ -82,7 +64,7 @@ export const TvSeriesControls = ({ tvSeries, type, handler }) => {
           <button
             title="Move to Watchlist"
             className="ctrl-btn"
-            onClick={() => moveToWatchlist(tvSeries)}
+            onClick={e => handler('moveToWatchlist', tvSeries.tmdb_id)}
           >
             <i className="fa-fw fas fa-clipboard-list"></i>
           </button>
@@ -90,7 +72,7 @@ export const TvSeriesControls = ({ tvSeries, type, handler }) => {
           <button
             title="Move to Watching"
             className="ctrl-btn"
-            onClick={() => moveToWatching(tvSeries)}
+            onClick={e => handler('moveToWatching', tvSeries.tmdb_id)}
           >
             <i className="fa-fw far fa-eye"></i>
           </button>
@@ -98,7 +80,7 @@ export const TvSeriesControls = ({ tvSeries, type, handler }) => {
           <button
             title="Remove from Watched"
             className="ctrl-btn"
-            onClick={() => removeFromWatched(tvSeries.tmdb_id)}
+            onClick={e => handler('removeFromWatched', tvSeries.tmdb_id)}
           >
             <i className="fa-fw fa fa-times"></i>
           </button>
