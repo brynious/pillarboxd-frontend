@@ -6,13 +6,9 @@ export const Watching = () => {
   const [watchingSeries, setWatchingSeries] = useState([]);
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3000/user/bryn/watching', {
-        withCredentials: true,
-      })
-      .then(response => {
-        setWatchingSeries(response.data);
-      });
+    axios.get('http://localhost:3000/user/bryn/watching').then(response => {
+      setWatchingSeries(response.data);
+    });
   }, []);
 
   const changeHandler = (action, tmdb_id) => {

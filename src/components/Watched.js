@@ -6,13 +6,9 @@ export const Watched = () => {
   const [watchedSeries, setWatchedSeries] = useState([]);
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3000/user/bryn/watched', {
-        withCredentials: true,
-      })
-      .then(response => {
-        setWatchedSeries(response.data);
-      });
+    axios.get('http://localhost:3000/user/bryn/watched').then(response => {
+      setWatchedSeries(response.data);
+    });
   }, []);
 
   const changeHandler = (action, tmdb_id) => {

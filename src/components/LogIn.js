@@ -27,7 +27,6 @@ export const LogIn = () => {
 
       console.log('request', { body });
       const res = await axios.post('http://localhost:3000/login', body, {
-        withCredentials: true,
         exposedHeaders: ['set-cookie'],
       });
 

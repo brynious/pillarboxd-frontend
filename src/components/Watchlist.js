@@ -6,13 +6,9 @@ export const Watchlist = () => {
   const [watchlistSeries, setWatchlistSeries] = useState([]);
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3000/user/bryn/watchlist', {
-        withCredentials: true,
-      })
-      .then(response => {
-        setWatchlistSeries(response.data);
-      });
+    axios.get('http://localhost:3000/user/bryn/watchlist').then(response => {
+      setWatchlistSeries(response.data);
+    });
   }, []);
 
   const changeHandler = (action, tmdb_id) => {
