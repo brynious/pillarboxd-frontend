@@ -13,39 +13,38 @@ export const Header = () => {
             <Link to="/">WatchList</Link>
           </div>
 
-          <ul className="nav-links">
-            <li>
-              <Link to="/watchlist">Watchlist</Link>
-            </li>
-            <li>
-              <Link to="/watching">Watching</Link>
-            </li>
-            <li>
-              <Link to="/watched">Watched</Link>
-            </li>
-            <li>
-              <Link to="/add" className="btn">
-                + Add
-              </Link>
-            </li>
-            {authState.isAuthenticated ? (
+          {authState.isAuthenticated ? (
+            <ul className="nav-links">
               <li>
-                {/* TODO: delete cookie on signout */}
+                <Link to="/watchlist">Watchlist</Link>
+              </li>
+              <li>
+                <Link to="/watching">Watching</Link>
+              </li>
+              <li>
+                <Link to="/watched">Watched</Link>
+              </li>
+              <li>
+                <Link to="/add" className="btn">
+                  + Add
+                </Link>
+              </li>
+              <li>
                 <Link to="/" onClick={() => dispatch({ type: 'logout' })}>
                   Sign out
                 </Link>
               </li>
-            ) : (
-              <>
-                <li>
-                  <Link to="/login">Login</Link>
-                </li>
-                <li>
-                  <Link to="/signup">Sign Up</Link>
-                </li>
-              </>
-            )}
-          </ul>
+            </ul>
+          ) : (
+            <ul className="nav-links">
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
+                <Link to="/signup">Sign Up</Link>
+              </li>
+            </ul>
+          )}
         </div>
       </div>
     </header>

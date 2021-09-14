@@ -37,8 +37,6 @@ export const Signup = () => {
       });
 
       const { userID, username, email } = res.data;
-      // setIsAuthenticated(true);
-      console.log({ isAuthenticated: true, userID, username, email });
 
       dispatch({
         type: 'login',

@@ -1,4 +1,3 @@
-// import { connectSocket, disconnectFromSocket } from './socket/Socket';
 import axios from 'axios';
 
 const authReducer = (authState, action) => {
@@ -20,7 +19,6 @@ const authReducer = (authState, action) => {
         userID,
         username,
         email,
-        // socket,
       };
     case 'logout':
       localStorage.clear();

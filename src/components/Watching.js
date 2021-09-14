@@ -1,21 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { TvSeriesCard } from './TvSeriesCard';
 import axios from 'axios';
+import { AuthContext } from '../context/AuthContext';
 
 export const Watching = () => {
+  const { authState } = useContext(AuthContext);
   const [watchingSeries, setWatchingSeries] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/user/bryn/watching').then(response => {
-      setWatchingSeries(response.data);
-    });
+    axios
+      .get(`http://localhost:3000/user/${authState.username}/watching`)
+      .then(response => {
+        setWatchingSeries(response.data);
+      });
   }, []);
 
   const changeHandler = (action, tmdb_id) => {
     switch (action) {
       case 'moveToWatchlist':
         axios
-          .post(`http://localhost:3000/user/bryn/watchlist/${tmdb_id}`)
+          .post(
+            `http://localhost:3000/user/${authState.username}/watchlist/${tmdb_id}`
+          )
           .then(() => {
             setWatchingSeries(
               watchingSeries.filter(series => series.tmdb_id !== tmdb_id)
@@ -27,7 +33,9 @@ export const Watching = () => {
         break;
       case 'moveToWatched':
         axios
-          .post(`http://localhost:3000/user/bryn/watched/${tmdb_id}`)
+          .post(
+            `http://localhost:3000/user/${authState.username}/watched/${tmdb_id}`
+          )
           .then(() => {
             setWatchingSeries(
               watchingSeries.filter(series => series.tmdb_id !== tmdb_id)
@@ -39,7 +47,9 @@ export const Watching = () => {
         break;
       case 'removeFromWatching':
         axios
-          .delete(`http://localhost:3000/user/bryn/watching/${tmdb_id}`)
+          .delete(
+            `http://localhost:3000/user/${authState.username}/watching/${tmdb_id}`
+          )
           .then(() => {
             setWatchingSeries(
               watchingSeries.filter(series => series.tmdb_id !== tmdb_id)

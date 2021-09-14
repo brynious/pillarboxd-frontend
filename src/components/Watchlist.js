@@ -1,21 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { TvSeriesCard } from './TvSeriesCard';
 import axios from 'axios';
+import { AuthContext } from '../context/AuthContext';
 
 export const Watchlist = () => {
+  const { authState } = useContext(AuthContext);
   const [watchlistSeries, setWatchlistSeries] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/user/bryn/watchlist').then(response => {
-      setWatchlistSeries(response.data);
-    });
+    axios
+      .get(`http://localhost:3000/user/${authState.username}/watchlist`)
+      .then(response => {
+        setWatchlistSeries(response.data);
+      });
   }, []);
 
   const changeHandler = (action, tmdb_id) => {
     switch (action) {
       case 'moveToWatching':
         axios
-          .post(`http://localhost:3000/user/bryn/watching/${tmdb_id}`)
+          .post(
+            `http://localhost:3000/user/${authState.username}/watching/${tmdb_id}`
+          )
           .then(() => {
             setWatchlistSeries(
               watchlistSeries.filter(series => series.tmdb_id !== tmdb_id)
@@ -27,7 +33,9 @@ export const Watchlist = () => {
         break;
       case 'moveToWatched':
         axios
-          .post(`http://localhost:3000/user/bryn/watched/${tmdb_id}`)
+          .post(
+            `http://localhost:3000/user/${authState.username}/watched/${tmdb_id}`
+          )
           .then(() => {
             setWatchlistSeries(
               watchlistSeries.filter(series => series.tmdb_id !== tmdb_id)
@@ -39,7 +47,9 @@ export const Watchlist = () => {
         break;
       case 'removeFromWatchlist':
         axios
-          .delete(`http://localhost:3000/user/bryn/watchlist/${tmdb_id}`)
+          .delete(
+            `http://localhost:3000/user/${authState.username}/watchlist/${tmdb_id}`
+          )
           .then(() => {
             setWatchlistSeries(
               watchlistSeries.filter(series => series.tmdb_id !== tmdb_id)

@@ -1,7 +1,10 @@
-import React, { useContext } from "react";
-import { GlobalContext } from "../context/GlobalState";
+import React, { useContext } from 'react';
+import axios from 'axios';
+import { AuthContext } from '../context/AuthContext';
 
 export const ResultCard = ({ tvSeries }) => {
+  const { authState } = useContext(AuthContext);
+
   tvSeries = {
     title: tvSeries.name,
     tmdb_id: tvSeries.id,
@@ -11,42 +14,35 @@ export const ResultCard = ({ tvSeries }) => {
     poster_path: tvSeries.poster_path,
   };
 
-  const {
-    addSeriesToWatchlist,
-    addSeriesToWatching,
-    addSeriesToWatched,
-    watchlist,
-    watching,
-    watched,
-  } = useContext(GlobalContext);
+  const moveToWatchlist = tmdb_id => {
+    axios
+      .post(
+        `http://localhost:3000/user/${authState.username}/watchlist/${tmdb_id}`
+      )
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
-  let storedSeriesWatchlist = watchlist.find(
-    o => o.tmdb_id === tvSeries.tmdb_id
-  );
-  let storedSeriesWatching = watching.find(o => o.tmdb_id === tvSeries.tmdb_id);
-  let storedSeriesWatched = watched.find(o => o.tmdb_id === tvSeries.tmdb_id);
+  const moveToWatching = tmdb_id => {
+    axios
+      .post(
+        `http://localhost:3000/user/${authState.username}/watching/${tmdb_id}`
+      )
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
-  const watchlistDisabled = storedSeriesWatchlist
-    ? true
-    : storedSeriesWatched
-    ? true
-    : storedSeriesWatching
-    ? true
-    : false;
-
-  // const watchlistDisabled = storedSeriesWatchlist
-  //   ? true
-  //   : storedSeriesWatched
-  //   ? true
-  //   : false;
-
-  const watchingDisabled = storedSeriesWatching
-    ? true
-    : storedSeriesWatched
-    ? true
-    : false;
-
-  const watchedDisabled = storedSeriesWatched ? true : false;
+  const moveToWatched = tmdb_id => {
+    axios
+      .post(
+        `http://localhost:3000/user/${authState.username}/watched/${tmdb_id}`
+      )
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   return (
     <div>
@@ -68,31 +64,28 @@ export const ResultCard = ({ tvSeries }) => {
             <h4 className="first-air-date">
               {tvSeries.first_air_date
                 ? tvSeries.first_air_date.substring(0, 4)
-                : "-"}
+                : '-'}
             </h4>
           </div>
 
           <div className="controls">
             <button
               className="btn"
-              disabled={watchlistDisabled}
-              onClick={() => addSeriesToWatchlist(tvSeries)}
+              onClick={() => moveToWatchlist(tvSeries.tmdb_id)}
             >
               Watchlist
             </button>
 
             <button
               className="btn"
-              disabled={watchingDisabled}
-              onClick={() => addSeriesToWatching(tvSeries)}
+              onClick={() => moveToWatching(tvSeries.tmdb_id)}
             >
               Watching
             </button>
 
             <button
               className="btn"
-              disabled={watchedDisabled}
-              onClick={() => addSeriesToWatched(tvSeries)}
+              onClick={() => moveToWatched(tvSeries.tmdb_id)}
             >
               Watched
             </button>

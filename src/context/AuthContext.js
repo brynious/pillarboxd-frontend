@@ -6,16 +6,15 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const initialState = {
     isAuthenticated: false,
-    // token: null,
     userID: null,
-    userName: null,
+    username: null,
   };
   const [authState, dispatch] = useReducer(authReducer, initialState);
 
   useEffect(() => {
     const isAuthenticated = localStorage.getItem('isAuthenticated');
     const userID = localStorage.getItem('userID');
-    const userName = localStorage.getItem('userName');
+    const username = localStorage.getItem('username');
 
     isAuthenticated &&
       dispatch({
@@ -23,7 +22,7 @@ const AuthProvider = ({ children }) => {
         payload: {
           isAuthenticated,
           userID,
-          userName,
+          username,
         },
       });
   }, []);

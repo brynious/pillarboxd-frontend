@@ -1,12 +1,10 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
-// import { TextInput, Button } from "./utils/Utils";
 import { AuthContext } from '../context/AuthContext';
 
 export const LogIn = () => {
   const { authState, dispatch } = useContext(AuthContext);
-  // const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userDetails, setUserDetails] = useState({
     email: 'bryn@google.com',
     password: 'test12',
@@ -31,8 +29,6 @@ export const LogIn = () => {
       });
 
       const { userID, username, email } = res.data;
-      // setIsAuthenticated(true);
-      console.log({ isAuthenticated: true, userID, username, email });
 
       dispatch({
         type: 'login',

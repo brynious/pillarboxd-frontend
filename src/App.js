@@ -13,7 +13,6 @@ import './App.css';
 import './lib/font-awesome/css/all.min.css';
 
 import { AuthProvider } from './context/AuthContext';
-import { GlobalProvider } from './context/GlobalState';
 
 axios.defaults.headers.post = {
   'Content-Type': 'application/json',
@@ -23,41 +22,39 @@ axios.defaults.withCredentials = true;
 function App() {
   return (
     <AuthProvider>
-      <GlobalProvider>
-        <Router>
-          <Header />
+      <Router>
+        <Header />
 
-          <Switch>
-            <Route exact path="/">
-              <Watchlist />
-            </Route>
+        <Switch>
+          <Route exact path="/">
+            <Watchlist />
+          </Route>
 
-            <Route exact path="/login">
-              <LogIn />
-            </Route>
+          <Route exact path="/login">
+            <LogIn />
+          </Route>
 
-            <Route exact path="/signup">
-              <Signup />
-            </Route>
+          <Route exact path="/signup">
+            <Signup />
+          </Route>
 
-            <Route exact path="/watchlist">
-              <Watchlist />
-            </Route>
+          <Route exact path="/watchlist">
+            <Watchlist />
+          </Route>
 
-            <Route exact path="/watching">
-              <Watching />
-            </Route>
+          <Route exact path="/watching">
+            <Watching />
+          </Route>
 
-            <Route exact path="/watched">
-              <Watched />
-            </Route>
+          <Route exact path="/watched">
+            <Watched />
+          </Route>
 
-            <Route exact path="/add">
-              <Add />
-            </Route>
-          </Switch>
-        </Router>
-      </GlobalProvider>
+          <Route exact path="/add">
+            <Add />
+          </Route>
+        </Switch>
+      </Router>
     </AuthProvider>
   );
 }
