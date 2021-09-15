@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Header } from './components/Header';
+import { Homepage } from './components/Homepage';
 import { LogIn } from './components/LogIn';
 import { Signup } from './components/Signup';
 import { Watchlist } from './components/Watchlist';
@@ -27,7 +28,7 @@ function App() {
 
         <Switch>
           <Route exact path="/">
-            <Watchlist />
+            <Homepage />
           </Route>
 
           <Route exact path="/login">
