@@ -8,11 +8,13 @@ export const Watching = () => {
   const [watchingSeries, setWatchingSeries] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3000/user/${authState.username}/watching`)
-      .then(response => {
-        setWatchingSeries(response.data);
-      });
+    if (authState.username) {
+      axios
+        .get(`http://localhost:3000/user/${authState.username}/watching`)
+        .then(response => {
+          setWatchingSeries(response.data);
+        });
+    }
   }, []);
 
   const changeHandler = (action, tmdb_id) => {
