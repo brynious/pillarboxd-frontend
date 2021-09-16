@@ -6,8 +6,8 @@ import { AuthContext } from '../context/AuthContext';
 export const LogIn = () => {
   const { authState, dispatch } = useContext(AuthContext);
   const [userDetails, setUserDetails] = useState({
-    email: 'bryn@google.com',
-    password: 'test12',
+    email: '',
+    password: '',
   });
 
   const handleChange = e => {

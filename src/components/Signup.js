@@ -8,9 +8,9 @@ export const Signup = () => {
   const { authState, dispatch } = useContext(AuthContext);
   // const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userDetails, setUserDetails] = useState({
-    username: 'testusername',
-    email: 'test@google.com',
-    password: 'test12',
+    username: '',
+    email: '',
+    password: '',
   });
   const [submissionErrors, setSubmissionErrors] = useState({
     username: '',
@@ -90,7 +90,7 @@ export const Signup = () => {
         <div className="form-group">
           <label htmlFor="password">Password:</label>
           <input
-            type="text"
+            type="password"
             id="password"
             name="password"
             value={userDetails.password}

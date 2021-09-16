@@ -10,7 +10,7 @@ export const Header = () => {
       <div className="container">
         <div className="inner-content">
           <div className="brand">
-            <Link to="/">WatchList</Link>
+            <Link to="/">Pillarboxd</Link>
           </div>
 
           {authState.isAuthenticated ? (
