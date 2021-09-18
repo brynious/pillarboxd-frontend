@@ -1,15 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap');
 
 :root {
-  --primary: #032541;
+  --primary: #abc;
   --secondary: #21d07a;
   --white: #fff;
 }
 
 body {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   padding: 0;
   margin: 0;
+  background-image: url('./img/content-bg.png');
+  background-repeat: repeat-x;
+  background-color: #14181c;
+  color: var(--primary);
 }
 
 .container {
@@ -46,7 +50,7 @@ body {
 .btn {
   padding: 10px 15px;
   background-color: var(--secondary);
-  color: var(--primary);
+  color: var(--white);
   border-radius: 5px;
   text-transform: uppercase;
   font-weight: 700;
@@ -203,7 +207,7 @@ header .nav-links li:last-child {
   font-size: 1.125rem;
   font-weight: 600;
   border-radius: 999px;
-  color: var(--primary);
+  color: var(--white);
 }
 
 .tv-series-page .heading {
@@ -288,4 +292,14 @@ header .nav-links li:last-child {
   color: #c4c4c4;
   font-size: 3rem;
   text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 1.23076923;
+  color: #abc;
+  font-family: Graphik-Light-Web, sans-serif;
+  font-weight: 400;
+  text-align: center;
+  margin: 0 0 2.30769231rem;
 }
