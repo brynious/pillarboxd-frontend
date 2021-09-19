@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const TvSeriesControls = ({ tvSeries, type, handler }) => {
+export const TvSeriesControls = ({ tvSeries, mainList, handler }) => {
   return (
     <div className="inner-card-controls">
-      {type === 'watchlist' && (
+      {mainList === 'watchlist' && (
         <>
           <button
             title="Move to Watching"
@@ -31,7 +31,7 @@ export const TvSeriesControls = ({ tvSeries, type, handler }) => {
         </>
       )}
 
-      {type === 'watching' && (
+      {mainList === 'watching' && (
         <>
           <button
             title="Move to Watchlist"
@@ -59,7 +59,7 @@ export const TvSeriesControls = ({ tvSeries, type, handler }) => {
         </>
       )}
 
-      {type === 'watched' && (
+      {mainList === 'watched' && (
         <>
           <button
             title="Move to Watchlist"

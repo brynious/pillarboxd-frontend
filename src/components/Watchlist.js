@@ -80,8 +80,9 @@ export const Watchlist = () => {
             {watchlistSeries.map((tvSeries, index) => (
               <TvSeriesCard
                 tvSeries={tvSeries}
-                type="watchlist"
+                mainList="watchlist"
                 key={index}
+                showControls={authState.isAuthenticated}
                 handler={(action, tmdb_id) => changeHandler(action, tmdb_id)}
               />
             ))}
