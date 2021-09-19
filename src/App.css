@@ -213,6 +213,7 @@ header .nav-links li:last-child {
 .tv-series-page .heading {
   color: var(--primary);
   margin: 0;
+  text-transform: capitalize;
 }
 
 .tv-series-grid {

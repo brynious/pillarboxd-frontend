@@ -5,10 +5,10 @@ import { Header } from './components/Header';
 import { Homepage } from './components/Homepage';
 import { LogIn } from './components/LogIn';
 import { Signup } from './components/Signup';
-import { Watchlist } from './components/Watchlist';
-import { Watched } from './components/Watched';
+import { MainList } from './components/MainList';
+// import { Watched } from './components/Watched';
 import { Add } from './components/Add';
-import { Watching } from './components/Watching';
+// import { Watching } from './components/Watching';
 import axios from 'axios';
 import './App.css';
 import './lib/font-awesome/css/all.min.css';
@@ -39,15 +39,25 @@ function App() {
             <Signup />
           </Route>
 
-          <Route exact path="/:user/watchlist" children={<Watchlist />} />
+          <Route
+            exact
+            path="/:user/watchlist"
+            children={<MainList mainListType="watchlist" />}
+          />
 
-          <Route exact path="/:user/watching" children={<Watching />} />
+          <Route
+            exact
+            path="/:user/watching"
+            children={<MainList mainListType="watching" />}
+          />
 
-          <Route exact path="/:user/watched" children={<Watched />} />
+          <Route
+            exact
+            path="/:user/watched"
+            children={<MainList mainListType="watched" />}
+          />
 
-          <Route exact path="/add">
-            <Add />
-          </Route>
+          <Route exact path="/add" children={<Add />} />
         </Switch>
       </Router>
     </AuthProvider>

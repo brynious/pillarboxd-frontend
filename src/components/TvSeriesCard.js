@@ -1,7 +1,12 @@
 import React from 'react';
 import { TvSeriesControls } from './TvSeriesControls';
 
-export const TvSeriesCard = ({ tvSeries, mainList, handler, showControls }) => {
+export const TvSeriesCard = ({
+  tvSeries,
+  mainListType,
+  handler,
+  showControls,
+}) => {
   return (
     <div className="tv-series-card">
       <div className="overlay"></div>
@@ -16,7 +21,7 @@ export const TvSeriesCard = ({ tvSeries, mainList, handler, showControls }) => {
 
       {showControls && (
         <TvSeriesControls
-          mainList={mainList}
+          mainListType={mainListType}
           tvSeries={tvSeries}
           handler={handler}
         />

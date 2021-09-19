@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const TvSeriesControls = ({ tvSeries, mainList, handler }) => {
+export const TvSeriesControls = ({ tvSeries, mainListType, handler }) => {
   return (
     <div className="inner-card-controls">
-      {mainList === 'watchlist' && (
+      {mainListType === 'watchlist' && (
         <>
           <button
             title="Move to Watching"
@@ -24,14 +24,14 @@ export const TvSeriesControls = ({ tvSeries, mainList, handler }) => {
           <button
             title="Remove from Watchlist"
             className="ctrl-btn"
-            onClick={e => handler('removeFromWatchlist', tvSeries.tmdb_id)}
+            onClick={e => handler('removeFromMainList', tvSeries.tmdb_id)}
           >
             <i className="fa-fw fa fa-times"></i>
           </button>
         </>
       )}
 
-      {mainList === 'watching' && (
+      {mainListType === 'watching' && (
         <>
           <button
             title="Move to Watchlist"
@@ -52,14 +52,14 @@ export const TvSeriesControls = ({ tvSeries, mainList, handler }) => {
           <button
             title="Remove from Watching"
             className="ctrl-btn"
-            onClick={e => handler('removeFromWatching', tvSeries.tmdb_id)}
+            onClick={e => handler('removeFromMainList', tvSeries.tmdb_id)}
           >
             <i className="fa-fw fa fa-times"></i>
           </button>
         </>
       )}
 
-      {mainList === 'watched' && (
+      {mainListType === 'watched' && (
         <>
           <button
             title="Move to Watchlist"
@@ -80,7 +80,7 @@ export const TvSeriesControls = ({ tvSeries, mainList, handler }) => {
           <button
             title="Remove from Watched"
             className="ctrl-btn"
-            onClick={e => handler('removeFromWatched', tvSeries.tmdb_id)}
+            onClick={e => handler('removeFromMainList', tvSeries.tmdb_id)}
           >
             <i className="fa-fw fa fa-times"></i>
           </button>
