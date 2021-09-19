@@ -13,7 +13,7 @@ import axios from 'axios';
 import './App.css';
 import './lib/font-awesome/css/all.min.css';
 
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider } from './contexts/AuthContext';
 
 axios.defaults.headers.post = {
   'Content-Type': 'application/json',

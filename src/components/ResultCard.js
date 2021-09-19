@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import axios from 'axios';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../contexts/AuthContext';
 
 export const ResultCard = ({ tvSeries }) => {
   const { authState } = useContext(AuthContext);

@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
 // import { TextInput, Button } from "./utils/Utils";
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../contexts/AuthContext';
 
 export const Signup = () => {
   const { authState, dispatch } = useContext(AuthContext);

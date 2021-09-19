@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { TvSeriesCard } from './TvSeriesCard';
 import axios from 'axios';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../contexts/AuthContext';
 
 export const Watchlist = () => {
   const { authState } = useContext(AuthContext);
   const [watchlistSeries, setWatchlistSeries] = useState([]);
 
   useEffect(() => {
-    if (authState.username) {
+    if (authState.isAuthenticated) {
       axios
         .get(`http://localhost:3000/user/${authState.username}/watchlist`)
         .then(response => {
