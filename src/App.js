@@ -39,17 +39,11 @@ function App() {
             <Signup />
           </Route>
 
-          <Route exact path="/watchlist">
-            <Watchlist />
-          </Route>
+          <Route exact path="/:user/watchlist" children={<Watchlist />} />
 
-          <Route exact path="/watching">
-            <Watching />
-          </Route>
+          <Route exact path="/:user/watching" children={<Watching />} />
 
-          <Route exact path="/watched">
-            <Watched />
-          </Route>
+          <Route exact path="/:user/watched" children={<Watched />} />
 
           <Route exact path="/add">
             <Add />

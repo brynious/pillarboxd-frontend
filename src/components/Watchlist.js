@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useParams } from 'react-router-dom';
 import { TvSeriesCard } from './TvSeriesCard';
 import axios from 'axios';
 import { AuthContext } from '../contexts/AuthContext';
@@ -6,15 +7,12 @@ import { AuthContext } from '../contexts/AuthContext';
 export const Watchlist = () => {
   const { authState } = useContext(AuthContext);
   const [watchlistSeries, setWatchlistSeries] = useState([]);
+  const { user } = useParams();
 
   useEffect(() => {
-    if (authState.isAuthenticated) {
-      axios
-        .get(`http://localhost:3000/user/${authState.username}/watchlist`)
-        .then(response => {
-          setWatchlistSeries(response.data);
-        });
-    }
+    axios.get(`http://localhost:3000/user/${user}/watchlist`).then(response => {
+      setWatchlistSeries(response.data);
+    });
   }, []);
 
   const changeHandler = (action, tmdb_id) => {

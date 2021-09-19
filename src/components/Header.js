@@ -16,13 +16,13 @@ export const Header = () => {
           {authState.isAuthenticated ? (
             <ul className="nav-links">
               <li>
-                <Link to="/watchlist">Watchlist</Link>
+                <Link to={`/${authState.username}/watchlist`}>Watchlist</Link>
               </li>
               <li>
-                <Link to="/watching">Watching</Link>
+                <Link to={`/${authState.username}/watching`}>Watching</Link>
               </li>
               <li>
-                <Link to="/watched">Watched</Link>
+                <Link to={`/${authState.username}/watched`}>Watched</Link>
               </li>
               <li>
                 <Link to="/add" className="btn">
