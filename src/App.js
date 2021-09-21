@@ -1,16 +1,13 @@
 import React from 'react';
-import './App.css';
+// import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Homepage } from './components/Homepage';
 import { LogIn } from './components/LogIn';
 import { Signup } from './components/Signup';
 import { MainList } from './components/MainList';
-// import { Watched } from './components/Watched';
 import { Add } from './components/Add';
-// import { Watching } from './components/Watching';
 import axios from 'axios';
-import './App.css';
 import './lib/font-awesome/css/all.min.css';
 
 import { AuthProvider } from './contexts/AuthContext';
@@ -39,23 +36,11 @@ function App() {
             <Signup />
           </Route>
 
-          <Route
-            exact
-            path="/:user/watchlist"
-            children={<MainList mainListType="watchlist" />}
-          />
+          <Route exact path="/:user/watchlist" children={<MainList mainListType="watchlist" />} />
 
-          <Route
-            exact
-            path="/:user/watching"
-            children={<MainList mainListType="watching" />}
-          />
+          <Route exact path="/:user/watching" children={<MainList mainListType="watching" />} />
 
-          <Route
-            exact
-            path="/:user/watched"
-            children={<MainList mainListType="watched" />}
-          />
+          <Route exact path="/:user/watched" children={<MainList mainListType="watched" />} />
 
           <Route exact path="/add" children={<Add />} />
         </Switch>
