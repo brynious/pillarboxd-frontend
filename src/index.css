@@ -14,10 +14,13 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   padding: 0;
   margin: 0;
-  background-image: url('./img/content-bg.png');
-  background-repeat: repeat-x;
   background-color: #14181c;
   color: var(--primary);
+}
+
+.site-background {
+  background-image: url('./img/content-bg.png');
+  background-repeat: repeat-x;
 }
 
 .container {
@@ -45,11 +48,11 @@ body {
   }
 }
 
-*,
+/* *,
 *:before,
 *:after {
   box-sizing: border-box;
-}
+} */
 
 .btn {
   padding: 10px 15px;
@@ -82,7 +85,7 @@ input:focus {
 
 /* Header Styles */
 header {
-  background-color: var(--primary);
+  /* background-color: var(--primary); */
 }
 
 header .inner-content {

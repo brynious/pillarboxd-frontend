@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
 // import { TextInput, Button } from "./utils/Utils";
 import { AuthContext } from '../contexts/AuthContext';
+import { SiteBackground } from './SiteBackground';
 
 export const Signup = () => {
   const { authState, dispatch } = useContext(AuthContext);
@@ -56,7 +57,7 @@ export const Signup = () => {
   };
 
   return (
-    <div>
+    <SiteBackground>
       {authState.isAuthenticated && <Redirect to="/" />}
       <form className="user-form" onSubmit={e => handleSubmit(e)}>
         <header className="form-header">
@@ -67,13 +68,7 @@ export const Signup = () => {
         </header>
         <div className="form-group">
           <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={userDetails.username}
-            onChange={e => handleChange(e)}
-          />
+          <input type="text" id="username" name="username" value={userDetails.username} onChange={e => handleChange(e)} />
           {submissionErrors.username && <p>{submissionErrors.username}</p>}
         </div>
         <div className="form-group">
@@ -89,17 +84,11 @@ export const Signup = () => {
         </div>
         <div className="form-group">
           <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={userDetails.password}
-            onChange={e => handleChange(e)}
-          />
+          <input type="password" id="password" name="password" value={userDetails.password} onChange={e => handleChange(e)} />
           {submissionErrors.password && <p>{submissionErrors.password}</p>}
         </div>
         <button>Create Account</button>
       </form>
-    </div>
+    </SiteBackground>
   );
 };
