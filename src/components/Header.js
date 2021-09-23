@@ -6,7 +6,7 @@ export const Header = () => {
   const { authState, dispatch } = useContext(AuthContext);
 
   return (
-    <header>
+    <header className="navbar">
       <div className="container">
         <div className="inner-content">
           <div className="brand">

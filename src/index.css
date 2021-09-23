@@ -84,8 +84,8 @@ input:focus {
 }
 
 /* Header Styles */
-header {
-  /* background-color: var(--primary); */
+.navbar {
+  background-color: var(--primary);
 }
 
 header .inner-content {
