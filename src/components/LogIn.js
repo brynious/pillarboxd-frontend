@@ -45,20 +45,6 @@ export const LogIn = () => {
   return (
     <SiteBackground>
       {authState.isAuthenticated && <Redirect to="/" />}
-      {/* <form className="user-form" onSubmit={e => handleSubmit(e)}>
-        <div className="form-group">
-          <label htmlFor="email">Email address:</label>
-          <input type="email" id="email" name="email" value={userDetails.email} onChange={e => handleChange(e)} />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password" value={userDetails.password} onChange={e => handleChange(e)} />
-        </div>
-        <button>Log in</button>
-      </form>
-      <span>
-        <Link to="/createaccount">Create an account</Link>
-      </span> */}
 
       <div class="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
         <header class="max-w-lg mx-auto">
