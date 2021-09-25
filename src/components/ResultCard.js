@@ -15,19 +15,19 @@ export const ResultCard = ({ tvSeries }) => {
   };
 
   const moveToWatchlist = tmdb_id => {
-    axios.post(`https://pillarboxd-backend.herokuapp.com//user/${authState.username}/watchlist/${tmdb_id}`).catch(err => {
+    axios.post(`https://pillarboxd-backend.herokuapp.com/user/${authState.username}/watchlist/${tmdb_id}`).catch(err => {
       console.log(err);
     });
   };
 
   const moveToWatching = tmdb_id => {
-    axios.post(`https://pillarboxd-backend.herokuapp.com//user/${authState.username}/watching/${tmdb_id}`).catch(err => {
+    axios.post(`https://pillarboxd-backend.herokuapp.com/user/${authState.username}/watching/${tmdb_id}`).catch(err => {
       console.log(err);
     });
   };
 
   const moveToWatched = tmdb_id => {
-    axios.post(`https://pillarboxd-backend.herokuapp.com//user/${authState.username}/watched/${tmdb_id}`).catch(err => {
+    axios.post(`https://pillarboxd-backend.herokuapp.com/user/${authState.username}/watched/${tmdb_id}`).catch(err => {
       console.log(err);
     });
   };
