@@ -11,7 +11,7 @@ export const MainList = ({ mainListType }) => {
   const { user } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/user/${user}/${mainListType}`).then(response => {
+    axios.get(`https://pillarboxd-backend.herokuapp.com/user/${user}/${mainListType}`).then(response => {
       setSeriesList(response.data);
     });
   }, [mainListType]);
@@ -20,7 +20,7 @@ export const MainList = ({ mainListType }) => {
     switch (action) {
       case 'moveToWatchlist':
         axios
-          .post(`http://localhost:3000/user/${authState.username}/watchlist/${tmdb_id}`)
+          .post(`https://pillarboxd-backend.herokuapp.com/user/${authState.username}/watchlist/${tmdb_id}`)
           .then(() => {
             // remove series from currently viewed list if it's the 'watching' list, else leave it
             if (mainListType === 'watching') {
@@ -33,7 +33,7 @@ export const MainList = ({ mainListType }) => {
         break;
       case 'moveToWatching':
         axios
-          .post(`http://localhost:3000/user/${authState.username}/watching/${tmdb_id}`)
+          .post(`https://pillarboxd-backend.herokuapp.com/user/${authState.username}/watching/${tmdb_id}`)
           .then(() => {
             // remove series from currently viewed list if it's the 'watching' list, else leave it
             if (mainListType === 'watchlist') {
@@ -46,7 +46,7 @@ export const MainList = ({ mainListType }) => {
         break;
       case 'moveToWatched':
         axios
-          .post(`http://localhost:3000/user/${authState.username}/watched/${tmdb_id}`)
+          .post(`https://pillarboxd-backend.herokuapp.com/user/${authState.username}/watched/${tmdb_id}`)
           .then(() => {
             setSeriesList(seriesList.filter(series => series.tmdb_id !== tmdb_id));
           })
@@ -56,7 +56,7 @@ export const MainList = ({ mainListType }) => {
         break;
       case 'removeFromMainList':
         axios
-          .delete(`http://localhost:3000/user/${authState.username}/${mainListType}/${tmdb_id}`)
+          .delete(`https://pillarboxd-backend.herokuapp.com/user/${authState.username}/${mainListType}/${tmdb_id}`)
           .then(() => {
             setSeriesList(seriesList.filter(series => series.tmdb_id !== tmdb_id));
           })

@@ -25,7 +25,7 @@ export const LogIn = () => {
       const body = JSON.stringify(userDetails);
 
       console.log('request', { body });
-      const res = await axios.post('http://localhost:3000/login', body, {
+      const res = await axios.post('https://pillarboxd-backend.herokuapp.com/login', body, {
         exposedHeaders: ['set-cookie'],
       });
 
