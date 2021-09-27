@@ -2,7 +2,7 @@
 
 ## Overview
 
-Front-end for Television Tracking site that tracks shows through three lists: watchlist, watching, and watched. Back-end can be found in my repository [tv-watchlist-backend](https://github.com/brynious/tv-watchlist-backend).
+Front-end for Television Tracking site that tracks shows through three lists: watchlist, watching, and watched. Back-end can be found in my repository [pillarboxd-backend](https://github.com/brynious/pillarboxd-backend).
 
 ## Design
 
@@ -13,6 +13,7 @@ These are the following changes I made:
 1. Instead of saving data locally, created a full back-end with Node, Express, and MongoDB for saving data in cloud. More info in repository linked above.
 1. Added additional watch state 'watching' to original states 'watchlist' and 'watched'.
 1. Connected to TMDB's API search for television shows, instead of movies.
+1. Added functionality for logging in and holding data for individual users.
 
 ## Purpose
 
