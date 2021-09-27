@@ -1,4 +1,4 @@
-# tv-watchlist
+# pillarboxd-frontend
 
 ## Overview
 
