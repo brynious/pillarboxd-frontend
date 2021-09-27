@@ -7,7 +7,7 @@ export const Homepage = () => {
       <div className="homepage">
         <h1>Homepage</h1>
 
-        <p>Created this website to learn more about web design.</p>
+        <p>Created this website to learn more about web development.</p>
 
         <p>
           <a href="https://github.com/brynious/pillarboxd-frontend" target="_blank">
