@@ -10,14 +10,14 @@ export const Homepage = () => {
         <p>Created this website to learn more about web development.</p>
 
         <p>
-          <a href="https://github.com/brynious/pillarboxd-frontend" target="_blank">
+          <a href="https://github.com/brynious/pillarboxd-frontend" target="_blank" rel="noreferrer">
             Front-end
           </a>{' '}
           made using React, context-api, react-router, and Tailwind CSS.
         </p>
 
         <p>
-          <a href="https://github.com/brynious/pillarboxd-backend" target="_blank">
+          <a href="https://github.com/brynious/pillarboxd-backend" target="_blank" rel="noreferrer">
             Back-end
           </a>{' '}
           made using Node, Express, JSON Web Token, and Bcrypt.
