@@ -145,6 +145,10 @@ header .nav-links li:last-child {
   font-size: 1.25rem;
 }
 
+input::placeholder {
+  color: white;
+}
+
 .results {
   padding: 0;
   margin: 0;
