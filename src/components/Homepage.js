@@ -3,26 +3,17 @@ import { SiteBackground } from './SiteBackground';
 
 export const Homepage = () => {
   return (
-    <SiteBackground>
-      <div className="homepage">
-        <h1>Homepage</h1>
-
-        <p>Created this website to learn more about web development.</p>
-
-        <p>
-          <a href="https://github.com/brynious/pillarboxd-frontend" target="_blank" rel="noreferrer">
-            Front-end
-          </a>{' '}
-          made using React, context-api, react-router, and Tailwind CSS.
-        </p>
-
-        <p>
-          <a href="https://github.com/brynious/pillarboxd-backend" target="_blank" rel="noreferrer">
-            Back-end
-          </a>{' '}
-          made using Node, Express, JSON Web Token, and Bcrypt.
-        </p>
+    <div className="homepage">
+      <div class="container pt-24 md:pt-36 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+        <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
+          <h1 class="my-4 text-3xl md:text-5xl text-white opacity-75 font-bold leading-tight text-center md:text-left">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">Pillarboxd</span>
+          </h1>
+          <p class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left">
+            Track the TV shows you're watching this lockdown and beyond!
+          </p>
+        </div>
       </div>
-    </SiteBackground>
+    </div>
   );
 };
