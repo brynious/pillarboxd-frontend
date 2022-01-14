@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { SiteBackground } from './SiteBackground';
+import toast, { Toaster } from 'react-hot-toast';
 
 export const LogIn = () => {
   const { authState, dispatch } = useContext(AuthContext);
@@ -10,6 +11,8 @@ export const LogIn = () => {
     email: '',
     password: '',
   });
+
+  const notify = () => toast('Here is your toast.');
 
   const handleChange = e => {
     setUserDetails({
@@ -20,6 +23,8 @@ export const LogIn = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
+
+    notify();
 
     try {
       const body = JSON.stringify(userDetails);
@@ -44,6 +49,7 @@ export const LogIn = () => {
 
   return (
     <SiteBackground>
+      <Toaster />
       {authState.isAuthenticated && <Redirect to="/" />}
 
       <div class="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
