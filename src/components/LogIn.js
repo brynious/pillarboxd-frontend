@@ -42,8 +42,7 @@ export const LogIn = () => {
 
       console.log('logged in');
     } catch (err) {
-      console.log({ err });
-      toast.error('error');
+      console.log(err);
     }
   };
 
