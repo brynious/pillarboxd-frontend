@@ -31,6 +31,7 @@ export const LogIn = () => {
       });
 
       const { userID, username, email } = res.data;
+      console.log('res.data', res.data);
 
       toast.success('logged in');
 
