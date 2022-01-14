@@ -24,8 +24,6 @@ export const LogIn = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    
-
     try {
       const body = JSON.stringify(userDetails);
       const res = await axios.post('https://pillarboxd-backend.herokuapp.com/login', body, {
@@ -43,7 +41,7 @@ export const LogIn = () => {
       console.log('logged in');
     } catch (err) {
       console.log(err);
-      toast.error(err);
+      toast.error('error');
     }
   };
 
