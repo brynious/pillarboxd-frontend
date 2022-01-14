@@ -24,12 +24,10 @@ export const LogIn = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    notify();
+    
 
     try {
       const body = JSON.stringify(userDetails);
-
-      console.log('request', { body });
       const res = await axios.post('https://pillarboxd-backend.herokuapp.com/login', body, {
         exposedHeaders: ['set-cookie'],
       });
@@ -41,9 +39,11 @@ export const LogIn = () => {
         payload: { isAuthenticated: true, userID, username, email },
       });
 
+      toast.success('logged in');
       console.log('logged in');
     } catch (err) {
       console.log(err);
+      toast.error(err);
     }
   };
 
