@@ -12,8 +12,6 @@ export const LogIn = () => {
     password: '',
   });
 
-  const notify = () => toast('Here is your toast.');
-
   const handleChange = e => {
     setUserDetails({
       ...userDetails,
@@ -33,7 +31,7 @@ export const LogIn = () => {
       const { userID, username, email } = res.data;
       console.log('res.data', res.data);
 
-      toast.success('logged in');
+      toast.success('Logged in');
 
       dispatch({
         type: 'login',
@@ -42,6 +40,7 @@ export const LogIn = () => {
 
       console.log('logged in');
     } catch (err) {
+      toast.error('Wrong password')
       console.log(err);
     }
   };
