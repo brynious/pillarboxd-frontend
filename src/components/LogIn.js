@@ -32,15 +32,16 @@ export const LogIn = () => {
 
       const { userID, username, email } = res.data;
 
+      toast.success('logged in');
+
       dispatch({
         type: 'login',
         payload: { isAuthenticated: true, userID, username, email },
       });
 
-      toast.success('logged in');
       console.log('logged in');
     } catch (err) {
-      console.log(err);
+      console.log({ err });
       toast.error('error');
     }
   };
