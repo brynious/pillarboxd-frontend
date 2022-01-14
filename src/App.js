@@ -9,6 +9,7 @@ import { MainList } from './components/MainList';
 import { Add } from './components/Add';
 import axios from 'axios';
 import './lib/font-awesome/css/all.min.css';
+import toast, { Toaster } from 'react-hot-toast';
 
 import { AuthProvider } from './contexts/AuthContext';
 
@@ -20,6 +21,7 @@ axios.defaults.withCredentials = true;
 function App() {
   return (
     <AuthProvider>
+      <Toaster />
       <Router>
         <Header />
 

@@ -49,7 +49,6 @@ export const LogIn = () => {
 
   return (
     <SiteBackground>
-      <Toaster />
       {authState.isAuthenticated && <Redirect to="/" />}
 
       <div class="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
